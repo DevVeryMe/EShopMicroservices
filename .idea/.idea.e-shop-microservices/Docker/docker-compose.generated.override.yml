@@ -1,6 +1,25 @@
 # This is a generated file. Not intended for manual editing.
 version: "3.4"
 services:
+  basket.api:
+    build:
+      context: "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices"
+      dockerfile: "Services/Basket/Basket.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Basket.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "basketapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\AndriiVeremii\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices\\Services\\Basket\\\
+      Basket.API:/app:rw"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
+    working_dir: "/app"
   catalog.api:
     build:
       context: "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices"
@@ -18,5 +37,24 @@ services:
     - "C:\\Users\\AndriiVeremii\\.nuget\\packages:/home/app/.nuget/packages"
     - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices\\Services\\Catalog\\\
       Catalog.API:/app:rw"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
+    working_dir: "/app"
+  discount.grpc:
+    build:
+      context: "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices"
+      dockerfile: "Services/Discount/Discount.Grpc/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Discount.Grpc.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "discountgrpc:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\AndriiVeremii\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices\\Services\\Discount\\\
+      Discount.Grpc:/app:rw"
     - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
     working_dir: "/app"
