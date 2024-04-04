@@ -22,15 +22,8 @@ public class CheckoutBasketCommandHandler(IBasketRepository repository, IPublish
     : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
 {
     public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
-    {
-        // get existing basket with total price
-        // Set total price on basket checkout event message
-        // send basket checkout event to rabbitmq using masstransit
-        // delete the basket
-
+    { 
         var basket = await repository.GetBasket(command.BasketCheckoutDto.UserName, cancellationToken);
-        
-        if (basket is null) return new CheckoutBasketResult(false);
 
         var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
         eventMessage.TotalPrice = basket.TotalPrice;

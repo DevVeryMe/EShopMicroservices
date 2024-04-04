@@ -1,8 +1,7 @@
-//using Discount.Grpc;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using BuildingBlocks.Messaging.MassTransit;
-using Discount.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 

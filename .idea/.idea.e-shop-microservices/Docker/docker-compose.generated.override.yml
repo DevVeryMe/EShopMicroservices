@@ -58,3 +58,40 @@ services:
       Discount.Grpc:/app:rw"
     - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
     working_dir: "/app"
+  ordering.api:
+    build:
+      context: "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices"
+      dockerfile: "Services/Ordering/Ordering.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Ordering.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "orderingapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\AndriiVeremii\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices\\Services\\Ordering\\\
+      Ordering.API:/app:rw"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
+    working_dir: "/app"
+  yarpapigateway:
+    build:
+      context: "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices"
+      dockerfile: "ApiGateways/YarpApiGateway/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/YarpApiGateway.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "yarpapigateway:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\AndriiVeremii\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices\\ApiGateways\\YarpApiGateway:/app:rw"
+    - "D:\\Personal\\Microservices\\Udemy\\e-shop-microservices:/src:rw"
+    working_dir: "/app"

@@ -4,7 +4,7 @@ public record BasketCheckoutEvent : IntegrationEvent
 {
     public string UserName { get; set; } = default!;
     public Guid CustomerId { get; set; } = default!;
-    public decimal TotalPrice { get; set; } = default!;
+    public decimal TotalPrice { get; set; }
 
     // Shipping and BillingAddress
     public string FirstName { get; set; } = default!;
